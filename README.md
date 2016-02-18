@@ -18,8 +18,15 @@
 * As a logged in person who posted a question can declare one of the user-submitted answers "the best."
 * As a logged in user, I  should be able to vote on questions, answers, and responses (both upvotes and downvotes) - only once. (2-3 hours)
 
+### Schema XML
+<a href="pseudocode/schema.xml">Schema XML</a>
+
+### Flow PDF
+<a href="pseudocode/overflow.pdf">Flow PDF</a>
 
 
+### Schema PNG
+<img src="pseudocode/schema.png">
 
 
 ###Deliverable Features
