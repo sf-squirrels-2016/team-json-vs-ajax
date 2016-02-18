@@ -1,0 +1,8 @@
+<!-- form for submiting post -->
+<form method='POST' action=''>
+	<% if @post.title %>
+	<input name='<%@person.title%>'></input>
+	<% end %>
+	<textarea name='<%= @person.body %>' rows="8" cols="60" placeholder="Answer posts"></textarea>
+	<button type='submit' class='<%= post.type %>'><%= post.type%></button>
+</form>
