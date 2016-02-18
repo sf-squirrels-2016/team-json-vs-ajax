@@ -1,8 +1,12 @@
+<!-- display post need to adjust-->
 
-<div class="well">
-	<h3><%= @post.tile%></h3>
+<div class="well" >
+
+	<% if @post.title %>
+		<h3><%= @post.tile%></h3>
+	<% end %>
+
 	<p><%= @post.vote_id.inject(0) { |sum, vote| sum + vote.value } %> <p>
-	<p> Posted by: <%= @post.post_id.first_name </p>
+	<p> Posted by: <%= @post.post_id.first_name ></p>
 	<button type='submit' class='<%= post.type %>'> <%= post.type%> </button>
 </div>
-
