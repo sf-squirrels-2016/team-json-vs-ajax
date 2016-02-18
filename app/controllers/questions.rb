@@ -1,5 +1,5 @@
 get '/questions' do
-  erb :'/questions'
+  erb :'/questions/index'
 end
 
 post '/questions' do
