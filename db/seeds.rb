@@ -9,3 +9,8 @@ users = 10.times.map do
                 :email      => Faker::Internet.email,
                 :password   => 'password' )
 end
+
+Post.delete_all
+  Post.create!(:user_id =>)
+
+#create
