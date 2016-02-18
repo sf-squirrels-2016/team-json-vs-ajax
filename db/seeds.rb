@@ -10,13 +10,44 @@ users = 10.times.map do
                 :password   => 'password' )
 end
 
-Post.delete_all
-#10 random questions
-posts= 10.times.map do
-  Post.create!(:user_id => 1+ Random.rand(10),
-               :kind =>     "question",
-               :title =>  Faker::Lorem.sentence + "?")
+Question.delete_all
+#30 random questions
+questions= 30.times.map do
+  Question.create!(
+  	user: (User.all).sample,
+               title:  Faker::Hipster.sentence + "?",
+               body: Faker::Lorem.paragraph(sentence_count = 3, supplemental = false, random_sentences_to_add = 3)
+               )
+end
+
+#100 random answers
+Answer.delete_all
+100.times do |n|
+	Answer.create(
+		user: (User.all).sample,
+		question: (Question.all).sample,
+		body: Faker::Lorem.paragraph(sentence_count = 3, supplemental = false, random_sentences_to_add = 3)
+		)
+end
+
+Comment.delete_all
+#50 random comments on questions
+50.times do |n|
+	Comment.create(
+		user:(User.all).sample,
+		commentable: (Question.all).sample,
+		body: Faker::Lorem.paragraph(sentence_count = 3, supplemental = false, random_sentences_to_add = 3)
+		)
+end
+#50 random comments on questions
+100.times do |n|
+	Comment.create(
+		user:(User.all).sample,
+		commentable: (Answer.all).sample,
+		body: Faker::Lorem.paragraph(sentence_count = 3, supplemental = false, random_sentences_to_add = 3)
+		)
 end
 
 
-#create
+
+
