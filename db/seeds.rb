@@ -11,6 +11,12 @@ users = 10.times.map do
 end
 
 Post.delete_all
-  Post.create!(:user_id =>)
+#10 random questions
+posts= 10.times.map do
+  Post.create!(:user_id => 1+ Random.rand(10),
+               :kind =>     "question",
+               :title =>  Faker::Lorem.sentence + "?")
+end
+
 
 #create
