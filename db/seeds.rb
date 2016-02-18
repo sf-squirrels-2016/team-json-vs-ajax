@@ -9,3 +9,14 @@ users = 10.times.map do
                 :email      => Faker::Internet.email,
                 :password   => 'password' )
 end
+
+Post.delete_all
+#10 random questions
+posts= 10.times.map do
+  Post.create!(:user_id => 1+ Random.rand(10),
+               :kind =>     "question",
+               :title =>  Faker::Lorem.sentence + "?")
+end
+
+
+#create
