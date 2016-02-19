@@ -3,18 +3,23 @@
 
 <!-- Question begins here -->
 <div class='container'>
-<div class="col-sm-12">
-  <div class="row">
-    <h2><%=@question.title%></h2>
+  <div class="col-sm-12">
+    <div class="row">
+      <h2><%=@question.title%></h2>
+    </div>
   </div>
-</div>
-<!-- Question ends here -->
+  <!-- Question ends here -->
+
 
 
 <div class="col-sm-2">
-  <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
-  <h2><%=@question.votes.count%></h2>
+  <a href='/questions/<%= @question.id %>/votes/add'>
+    <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
+  </a>
+  <h2><%=@question.votes.sum(:vote_value)%></h2>
+  <a href='/questions/<%= @question.id %>/votes/minus'>
   <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
+</a>
   votes
   <h2><%=@question.answers.count%></h2>
   answers
@@ -30,20 +35,32 @@
 
 <% @question.answers.each do |response| %>
 
+
 <div class='container'>
   <div class="col-sm-2">
+      <a href='/answers/<%= response.id %>/votes/add'>
     <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
-    <h2>X</h2>
+    </a)
+    <h2><%= response.votes.sum(:vote_value)%></h2>
+       <a href='/answers/<%= response.id %>/votes/minus'>
     <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
-    votes
-  </div>
-  <div class="col-sm-10">
-    <p><%= response.body %>
-    </p>
-    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-    Asked <%= response.created_at.month.to_s + '/' + response.created_at.day.to_s + '/' + response.created_at.year.to_s%> BY
-    <%= response.user.first_name + ' ' + response.user.last_name%>
-  </div>
-</div>
+  </a>
 
-  <%end%>
+      votes
+    </div>
+    <div class="col-sm-10">
+      <p><%= response.body %>
+      </p>
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      Asked <%= response.created_at.month.to_s + '/' + response.created_at.day.to_s + '/' + response.created_at.year.to_s%> BY
+      <%= response.user.first_name + ' ' + response.user.last_name%>
+    </div>
+
+  </div>
+
+<%end%>
+<% if session.has_key?(:user_id) %>
+  <div class='container'>
+<%= erb :'/answers/_form', :layout => false, locals:{question_id:@question.id} %>
+</div>
+<% end %>
