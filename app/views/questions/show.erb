@@ -12,9 +12,13 @@
 
 
 <div class="col-sm-2">
-  <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
+  <a href='/questions/<%= @question.id %>/votes/add'>
+    <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
+  </a>
   <h2><%=@question.votes.sum(:vote_value)%></h2>
+  <a href='/questions/<%= @question.id %>/votes/minus'>
   <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
+</a>
   votes
   <h2><%=@question.answers.count%></h2>
   answers
