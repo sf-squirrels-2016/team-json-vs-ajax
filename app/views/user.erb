@@ -31,7 +31,12 @@
       </tbody>
     </table>
   </div>
-  <ul id = "questions_list">
-  <!-- stopping point DR. -->
-  </ul>
+
 </div>
+<h2>Questions</h2>
+
+<%@logged_in_as.questions.each do |question| %>
+
+ <%= erb :'/questions/_question_row', :layout => false, locals:{ question:question} %>
+  <%= erb :'/questions/_seperator', :layout => false%>
+<%end%>

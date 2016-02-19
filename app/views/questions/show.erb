@@ -25,11 +25,9 @@
 </div>
 
   <div class="col-sm-10">
-  <p> <%=@question.body%>
-</p>
+    <p><%=@question.body%></p>
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-    asked <%=@question.created_at%>
-    <%=@question.user.full_name%>
+    asked <%=@question.user.full_name%> on <%=@question.created_at%>
 
   </div>
 </div>
