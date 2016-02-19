@@ -1,11 +1,7 @@
 post '/questions/:id/answers' do 
 	answer = Answer.create(body: params[:body], user_id: session[:user_id], question: Question.find(params[:id]))
 	if answer.save 
-		if request.xhr?
-			erb :"_answer_row", :layout=> false, locals: { answer: answer }
-		else
 			redirect "/questions/#{params[:id]}"
-		end
 	else
 		# show errors here. 
 	end

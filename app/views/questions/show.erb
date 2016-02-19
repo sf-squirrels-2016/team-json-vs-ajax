@@ -11,21 +11,20 @@
   <!-- Question ends here -->
 
 
-  <div class="col-sm-2">
-    <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
-    <h2><%=@question.votes.count%></h2>
-    <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
-    votes
-    <h2><%=@question.answers.count%></h2>
-    answers
-  </div>
+
+<div class="col-sm-2">
+  <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
+  <h2><%=@question.votes.sum(:vote_value)%></h2>
+  <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
+  votes
+  <h2><%=@question.answers.count%></h2>
+  answers
+</div>
 
   <div class="col-sm-10">
-    <p> <%=@question.body%>
-    </p>
+    <p><%=@question.body%></p>
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-    asked <%=@question.created_at%>
-    <%=@question.user.full_name%>
+    asked <%=@question.user.full_name%> on <%=@question.created_at%>
 
   </div>
 </div>
