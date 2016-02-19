@@ -1,3 +1,22 @@
+
+<% if session[:user_id] %>
+<h1>Ask a Question</h1>
+  <form action="/questions" method="POST">
+    <fieldset class="form-group">
+      <label for="inputTitle">Title</label>
+      <input type="text" name="title" class="form-control" id="inputTitle" placeholder="What is your programming question? Be specific." required>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="textArea">Question Details</label>
+      <textarea class="form-control" name="body" id="textArea" rows="3" required></textarea>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<% else %>
+  <div class="alert alert-danger" role="alert">You must be logged in to ask a question. Click here to <a href="/sessions/new">login</a>...</div>
+<% end %>
+<hr>
 <% @questions.each do |question| %>
 
   <%= erb :'/questions/_question_row', :layout => false, locals:{ question:question} %>

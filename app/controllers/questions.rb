@@ -4,7 +4,7 @@ get '/questions' do
 end
 
 post '/questions' do
-  question = Question.create(title: params[:title], user: current_user)
+  question = Question.create(title: params[:title], body: params[:body], user_id: session[:user_id])
   if request.xhr?
     
   else
