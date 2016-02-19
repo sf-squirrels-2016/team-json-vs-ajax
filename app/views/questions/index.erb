@@ -1,5 +1,7 @@
-<%= erb :'/questions/_question_row', :layout => false %>
-<%= erb :'/questions/_seperator', :layout => false %>
+<%@questions.each do |question| %>
+<%= erb :'/questions/_question_row', :layout => false, locals:{ question:question} %>
+<%= erb :'/questions/_seperator', :layout => false%>
+<%end%>
 
 
 
