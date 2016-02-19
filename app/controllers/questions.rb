@@ -3,7 +3,7 @@ get '/questions' do
 end
 
 post '/questions' do
-  question = Post.create(title: params[:title], user: current_user)
+  question = Question.create(title: params[:title], user: current_user)
   if request.xhr?
     
   else
@@ -12,13 +12,13 @@ post '/questions' do
 end
 
 get '/questions/:id' do
-  @question = Post.find_by(id: params[:id])
+  @question = Question.find_by(id: params[:id])
   erb :'/questions/show'
 end
 
 get '/questions/:id/edit' do
   if logged_in?
-  @question = Post.find_by(id: params[:id])
+  @question = Question.find_by(id: params[:id])
   if request.xhr?
     erb :'_form', :layout => false
   else
@@ -30,7 +30,7 @@ get '/questions/:id/edit' do
 end
 
 put '/questions/:id' do
-  @question = Post.find_by(id: params[:id])
+  @question = Question.find_by(id: params[:id])
   if request.xhr?
     erb :'_question', :layout => false 
   else
