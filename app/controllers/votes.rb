@@ -17,3 +17,21 @@ get '/questions/:id/votes/minus' do
   redirect "/questions/#{params[:id]}"
 end
 
+get '/answers/:id/votes/add' do
+  answer_id = Answer.find(params[:id])
+  p params[:id]
+  p answer_id
+  user = User.find(session[:user_id])
+  p session[:user_id]
+  my_vote = Vote.new(user: user, votable: answer_id, vote_value:1)
+  my_vote.save
+  redirect "/questions/#{answer_id.question.id}"
+end
+
+get '/answers/:id/votes/minus' do
+  answer_id = Answer.find(params[:id])
+  user = User.find(session[:user_id])
+  my_vote = Vote.new(user: user, votable: answer_id, vote_value:-1)
+  my_vote.save
+  redirect "/questions/#{answer_id.question.id}"
+end

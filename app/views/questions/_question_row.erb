@@ -18,6 +18,18 @@
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
     asked by <b><%=question.user.full_name%></b> on <%=question.created_at%> 
   </div>
+
+  <div class="row comments_div" style="text-align: left; margin-top: 20px;">
+    <h5>Comments</h5>
+    <% question.comments.each do |c| %>
+      <div class="row" style="text-align: left; margin-top: 20px;">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= c.body %>
+      </div>
+    <% end %>
+  </div>
+
+
+
   <div class="row" style="margin-top: 20px;">
     <button type="button" class="btn btn-default btn-sm comment_show_button">
       <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Comment
@@ -25,12 +37,13 @@
     <br><br>
 
     <!-- Comment Form Starts Here -->
-    <div class="comment_div">
+    <div class="main_comment_div">
       <% if session[:user_id] %>
-        <form class="comment_form" action="/questions" method="POST">
+        <form class="comment_form" action="/comments" method="POST">
           <fieldset class="form-group">
             <label for="textArea">Your Comment</label>
-            <textarea class="form-control" name="body" id="textArea" rows="3" required></textarea>
+            <textarea class="form-control textArea" name="body" id="textArea" rows="3" required></textarea>
+            <input type="hidden" name="question_id" value="<%= question.id %>">
           </fieldset>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
