@@ -10,15 +10,39 @@
 <div class="col-sm-10">
   <div class="row">
     <h2>
-    <a href=<%="/questions/#{question.id}"%>>
-
-    <%=question.title%></a></h2>
-    <%=question.body%>
+    <a href=<%="/questions/#{question.id}"%>><%=question.title%></a></h2>
+    <br>
+    <h4><%=question.body%></h4>
   </div>
-  <div class="row" style="text-align: right;">
+  <div class="row" style="text-align: right; margin-top: 20px;">
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-    asked <%=question.created_at%>
-    <%=question.user.full_name%>
+    asked by <b><%=question.user.full_name%></b> on <%=question.created_at%> 
+  </div>
+  <div class="row" style="margin-top: 20px;">
+    <button type="button" class="btn btn-default btn-sm comment_show_button">
+      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Comment
+    </button>
+    <br><br>
+
+    <!-- Comment Form Starts Here -->
+    <div class="comment_div">
+      <% if session[:user_id] %>
+        <form class="comment_form" action="/questions" method="POST">
+          <fieldset class="form-group">
+            <label for="textArea">Your Comment</label>
+            <textarea class="form-control" name="body" id="textArea" rows="3" required></textarea>
+          </fieldset>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      <% else %>
+        <div class="alert alert-danger" role="alert">You must be logged in to ask a question. Click here to <a href="/sessions/new">login</a>...</div>
+      <% end %>
+    </div>
+    <!-- Comment Form Ends Here -->
+
+
+
   </div>
 </div>
 <!-- Question ends here now -->
+
