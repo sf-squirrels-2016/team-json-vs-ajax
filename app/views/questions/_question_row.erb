@@ -1,6 +1,6 @@
 <!-- Question begins here -->
 <div class="col-sm-2" style="text-align: center;">
-  <h2><%= question.votes.count%></h2>
+  <h2><%= question.votes.sum(:vote_value)%></h2>
   votes
   <h2><%= question.answers.count%></h2>
   answers

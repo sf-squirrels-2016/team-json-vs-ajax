@@ -13,7 +13,7 @@
 
 <div class="col-sm-2">
   <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
-  <h2><%=@question.votes.count%></h2>
+  <h2><%=@question.votes.sum(:vote_value)%></h2>
   <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
   votes
   <h2><%=@question.answers.count%></h2>

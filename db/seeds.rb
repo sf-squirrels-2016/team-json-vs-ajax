@@ -39,7 +39,7 @@ Comment.delete_all
 		body: Faker::Lorem.paragraph(sentence_count = 3, supplemental = false, random_sentences_to_add = 3)
 		)
 end
-#50 random comments on questions
+#100 random comments on questions
 100.times do |n|
 	Comment.create(
 		user:(User.all).sample,
@@ -48,6 +48,20 @@ end
 		)
 end
 
+Vote.delete_all
 
-
-
+# 200 votes on questions
+200.times do |n|
+	Vote.create(
+		user:(User.all).sample,
+		votable:(Question.all).sample, vote_value: [1,-1].sample
+		)
+end
+#300 votes on answers 
+300.times do |n|
+	Vote.create(
+		user:(User.all).sample,
+		votable:(Answer.all).sample,
+		vote_value: [1,-1].sample
+		)
+end
