@@ -60,7 +60,7 @@
 
 <%end%>
 <% if session.has_key?(:user_id) %>
-  <div class='container'>
+  <div class='container theme-showcase'>
 <%= erb :'/answers/_form', :layout => false, locals:{question_id:@question.id} %>
 </div>
 <% end %>
