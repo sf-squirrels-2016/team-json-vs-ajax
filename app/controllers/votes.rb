@@ -16,3 +16,4 @@ get '/questions/:id/votes/minus' do
   my_vote.save
   redirect "/questions/#{params[:id]}"
 end
+
