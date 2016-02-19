@@ -32,8 +32,8 @@
 
   </div>
 </div>
-
-<% @question.answers.each do |response| %>
+<% sorted_answer = @question.answers.sort_by {|answer| answer.votes.sum(:vote_value)}.reverse %>
+<% sorted_answer.each do |response| %>
 
 
 <div class='container'>
