@@ -36,8 +36,10 @@
 
 <div class='container'>
   <div class="col-sm-2">
+      <a href='/answers/<%= response.id %>/votes/add'>
     <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
-    <h2>X</h2>
+    </a)
+    <h2><%= response.votes.sum(:vote_value)%></h2>
     <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
     votes
   </div>
