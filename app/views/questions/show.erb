@@ -40,7 +40,9 @@
     <h2><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h2>
     </a)
     <h2><%= response.votes.sum(:vote_value)%></h2>
+       <a href='/answers/<%= response.id %>/votes/minus'>
     <h2><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h2>
+  </a>
     votes
   </div>
   <div class="col-sm-10">
