@@ -1,21 +1,24 @@
 <!-- Question begins here -->
 <div class="col-sm-2" style="text-align: center;">
-  <h2>12</h2>
+  <h2><%=@question.votes.count%></h2>
   votes
-  <h2>3</h2>
+  <h2><%=@question.answers.count%></h2>
   answers
 </div>
 
 
 <div class="col-sm-10">
   <div class="row">
-    <h2>Jquery problem title goes here</h2>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, nostrum eligendi, aliquam temporibus quae libero illo molestias repellat. Perspiciatis enim quo inventore velit totam, officia accusamus sequi dolor voluptas blanditiis.
+    <h2>
+    <a href=<%="/questions/#{question.id}"%>>
+
+    <%=question.title%></a></h2>
+    <%=question.body%>
   </div>
   <div class="row" style="text-align: right;">
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-    asked 1 min ago
-    Lara Croft
+    asked <%=question.created_at%>
+    <%=question.user.full_name%>
   </div>
 </div>
 <!-- Question ends here -->
