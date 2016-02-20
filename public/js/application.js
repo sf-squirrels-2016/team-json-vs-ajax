@@ -34,8 +34,9 @@ $(document).ready(function () {
         serverResponse.comment
         var div ="<div class='row' style='text-align: left; margin-top: 20px;'>" + 
         "<span class='glyphicon glyphicon-user' aria-hidden='true'></span> " + serverResponse.comment + "</div>"
+        console.log('#comment-for-'+serverResponse.parent)
 
-        $('.comments_div').append(div);
+        $ ('#comments-for-'+serverResponse.parent).append(div);
         $('.main_comment_div').hide();
         $('.textArea').val('');
 
