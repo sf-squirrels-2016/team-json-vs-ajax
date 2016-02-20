@@ -35,7 +35,47 @@
 <% sorted_answer = @question.answers.sort_by {|answer| answer.votes.sum(:vote_value)}.reverse %>
 <% sorted_answer.each do |response| %>
 
+
   <%= erb :'/answers/_answer', :layout => false, :locals => {:response =>response} %>
+
+
+
+      <div class="row comments_div"  id=<%="comments-for-#{response.id}"%> style="text-align: left; margin-top: 20px;">
+    <h5>Comments</h5>
+    <% response.comments.each do |c| %>
+      <div class="row" style="text-align: left; margin-top: 20px;">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= c.body %>
+      </div>
+    <% end %>
+  </div>
+
+
+
+  <div class="row" style="margin-top: 20px;">
+    <button type="button" class="btn btn-default btn-sm comment_show_button">
+      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Comment
+    </button>
+    <br><br>
+
+    <!-- Comment Form Starts Here -->
+    <div class="main_comment_div">
+      <% if session[:user_id] %>
+        <form class="comment_form" action="/answer_comments" method="POST">
+          <fieldset class="form-group">
+            <label for="textArea">Your Comment</label>
+            <textarea class="form-control textArea" name="body" id="textArea" rows="3" required></textarea>
+            <input type="hidden" name="answer_id" value="<%= response.id %>">
+          </fieldset>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      <% else %>
+        <div class="alert alert-danger" role="alert">You must be logged in to make a comment. Click here to <a href="/sessions/new">login</a>...</div>
+      <% end %>
+    </div>
+
+
+  </div>
+
 
 <%end%>
 
